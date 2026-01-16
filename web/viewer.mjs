@@ -955,7 +955,7 @@ const defaultOptions = {
     kind: OptionKind.WORKER
   },
   workerSrc: {
-    value: "../build/pdf.worker.mjs",
+    value: "../build/pdf.worker.js",
     kind: OptionKind.WORKER
   }
 };
@@ -17956,10 +17956,12 @@ initCom(PDFViewerApplication);
     if (HOSTED_VIEWER_ORIGINS.has(viewerOrigin)) {
       return;
     }
-    const fileOrigin = URL.parse(file, window.location)?.origin;
-    if (fileOrigin === viewerOrigin) {
+    /*const fileOrigin = URL.parse(file, window.location)?.origin;
+     if (fileOrigin === viewerOrigin) {
       return;
-    }
+    }*/
+    return;
+  
     const ex = new Error("file origin does not match viewer's");
     PDFViewerApplication._documentError("pdfjs-loading-error", {
       message: ex.message
